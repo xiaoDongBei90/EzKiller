@@ -9,18 +9,13 @@ import androidx.fragment.app.Fragment
 
 abstract class BaseFragment : Fragment() {
 
-    open fun abc(){
-        Log.d("HomeFragment","BaseFragment")
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return inflater.inflate(getLayoutRes(), null)
     }
 
-//     fun getLayoutRes(): Int{}
+    abstract fun getLayoutRes(): Int
 }
