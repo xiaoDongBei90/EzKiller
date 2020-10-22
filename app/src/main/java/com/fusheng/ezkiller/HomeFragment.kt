@@ -1,8 +1,25 @@
 package com.fusheng.ezkiller
 
+import android.view.Gravity
 import com.fusheng.ezkiller.util.EzLog
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : BaseFragment() {
+    override fun initView() {
+
+
+    }
+
+    override fun initListener() {
+        stv.setOnClickListener {
+//            showDialog()
+        }
+    }
+
+    private fun showDialog() {
+        val selectionsDialog = SelectionsPopupWindow(requireContext())
+        selectionsDialog.showAtLocation(activity?.window?.decorView, Gravity.BOTTOM, 0, 0)
+    }
 
     override fun getLayoutRes(): Int = R.layout.fragment_home
 

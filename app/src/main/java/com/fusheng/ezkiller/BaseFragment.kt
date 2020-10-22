@@ -22,6 +22,14 @@ abstract class BaseFragment : Fragment() {
         return inflater.inflate(getLayoutRes(), null)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView()
+        initListener()
+    }
+
+    abstract fun initView()
+    abstract fun initListener()
     abstract fun getLayoutRes(): Int
 
     override fun onResume() {
@@ -44,7 +52,7 @@ abstract class BaseFragment : Fragment() {
         setVisibleToUser(!hidden)
     }
 
-     private fun setVisibleToUser(isVisibleToUser: Boolean) {
+    private fun setVisibleToUser(isVisibleToUser: Boolean) {
         if (isVisibleToUser) {
             if (isVisible == false && checkVisible()) {
                 if (isFirstVisible == true) {
@@ -68,7 +76,7 @@ abstract class BaseFragment : Fragment() {
         }
     }
 
-     private fun checkVisible(): Boolean {
+    private fun checkVisible(): Boolean {
         var fragment = this.parentFragment
         while (fragment != null) {
             if (fragment.isHidden || !fragment.userVisibleHint) {
